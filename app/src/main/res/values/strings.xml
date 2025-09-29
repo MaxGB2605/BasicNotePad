@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notepad</string>
+    <string name="hint_start_typing">Start typing your note…</string>
+    <string name="action_save">Save</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_theme">Theme</string>
+    <string name="theme_dialog_title">Choose Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System Default</string>
+    <string name="no_notes_yet_ntap_to_create_one">No notes yet.\nTap + to create one!</string>
+    <string name="add_new_note">Add new note</string>
+</resources>
