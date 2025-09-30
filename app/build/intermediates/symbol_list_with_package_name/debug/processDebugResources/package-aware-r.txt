@@ -3168,6 +3168,8 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id buttonAddItem
+id buttonDeleteItem
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3182,6 +3184,7 @@ id chain
 id chain2
 id chains
 id checkbox
+id checkboxItem
 id checked
 id chronometer
 id circle_center
@@ -3241,6 +3244,8 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextItem
+id editTextTitle
 id edit_query
 id edit_text_id
 id elastic
@@ -3437,6 +3442,7 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id recyclerViewChecklist
 id report_drawn
 id reverseSawtooth
 id right
@@ -3690,6 +3696,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_checklist
 layout activity_main
 layout activity_notes_list
 layout custom_dialog
@@ -3710,6 +3717,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_checklist
 layout item_note
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3829,7 +3837,10 @@ string call_notification_screening_text
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
+string choose_note_type
 string clear_text_end_icon_content_description
+string create_checklist
+string create_note
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description

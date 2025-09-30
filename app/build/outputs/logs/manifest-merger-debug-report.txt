@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-28:12
-INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-28:12
+ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:1-33:12
 MERGED from [androidx.databinding:viewbinding:8.7.2] C:\Users\mbrazhko\.gradle\caches\8.9\transforms\2078e1c4ecdc4f4a040af155a74bb96c\transformed\jetified-viewbinding-8.7.2\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\mbrazhko\.gradle\caches\8.9\transforms\8491adcb268931b057794c694fed004a\transformed\material-1.10.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\mbrazhko\.gradle\caches\8.9\transforms\b457cdfa5fec92942434ccf8c148297c\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -58,8 +58,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\mbrazhk
 	xmlns:android
 		ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:5:5-26:19
-INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:5:5-26:19
+ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:5:5-31:19
+INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:5:5-31:19
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\mbrazhko\.gradle\caches\8.9\transforms\8491adcb268931b057794c694fed004a\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\mbrazhko\.gradle\caches\8.9\transforms\8491adcb268931b057794c694fed004a\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\mbrazhko\.gradle\caches\8.9\transforms\b457cdfa5fec92942434ccf8c148297c\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -120,6 +120,16 @@ ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\And
 		ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:23:13-37
 	android:name
 		ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:22:13-41
+activity#com.example.basicnotepad.ChecklistActivity
+ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:26:9-30:63
+	android:parentActivityName
+		ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:30:13-60
+	android:windowSoftInputMode
+		ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:29:13-55
+	android:exported
+		ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:28:13-37
+	android:name
+		ADDED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml:27:13-46
 uses-sdk
 INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\mbrazhko\AndroidStudioProjects\basicNotepad\app\src\main\AndroidManifest.xml

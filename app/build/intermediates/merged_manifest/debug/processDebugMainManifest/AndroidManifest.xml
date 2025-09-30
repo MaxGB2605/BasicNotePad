@@ -39,6 +39,11 @@
             android:exported="false"
             android:parentActivityName="com.example.basicnotepad.NotesListActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.basicnotepad.ChecklistActivity"
+            android:exported="false"
+            android:parentActivityName="com.example.basicnotepad.NotesListActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

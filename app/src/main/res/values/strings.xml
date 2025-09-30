@@ -11,4 +11,7 @@
     <string name="theme_system">System Default</string>
     <string name="no_notes_yet_ntap_to_create_one">No notes yet.\nTap + to create one!</string>
     <string name="add_new_note">Add new note</string>
+    <string name="create_note">Note</string>
+    <string name="create_checklist">Checklist</string>
+    <string name="choose_note_type">Choose Note Type</string>
 </resources>

@@ -38,7 +38,7 @@ class NotesListActivity : AppCompatActivity() {
         setupRecyclerView()
         
         fabAddNote.setOnClickListener {
-            createNewNote()
+            showNoteTypeDialog()
         }
     }
     
@@ -78,14 +78,42 @@ class NotesListActivity : AppCompatActivity() {
         }
     }
     
+    private fun showNoteTypeDialog() {
+        val options = arrayOf(
+            getString(R.string.create_note),
+            getString(R.string.create_checklist)
+        )
+        
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.choose_note_type)
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> createNewNote()
+                    1 -> createNewChecklist()
+                }
+            }
+            .show()
+    }
+    
     private fun createNewNote() {
         val newNote = Note()
         noteManager.saveNote(newNote)
         openNote(newNote)
     }
     
+    private fun createNewChecklist() {
+        val newNote = Note(isChecklist = true)
+        newNote.checklistItems.add(ChecklistItem())
+        noteManager.saveNote(newNote)
+        openNote(newNote)
+    }
+    
     private fun openNote(note: Note) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = if (note.isChecklist) {
+            Intent(this, ChecklistActivity::class.java)
+        } else {
+            Intent(this, MainActivity::class.java)
+        }
         intent.putExtra("NOTE_ID", note.id)
         startActivity(intent)
     }

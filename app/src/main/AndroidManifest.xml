@@ -23,6 +23,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".NotesListActivity" />
+        <activity
+            android:name=".ChecklistActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".NotesListActivity" />
     </application>
 
 </manifest>

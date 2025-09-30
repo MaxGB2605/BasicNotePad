@@ -24,6 +24,11 @@ drawable ic_launcher_foreground_foreground
 id action_clear
 id action_save
 id action_theme
+id buttonAddItem
+id buttonDeleteItem
+id checkboxItem
+id editTextItem
+id editTextTitle
 id emptyStateTextView
 id fabAddNote
 id noteDateTextView
@@ -31,9 +36,12 @@ id noteEditText
 id notePreviewTextView
 id noteTitleTextView
 id notesRecyclerView
+id recyclerViewChecklist
 id toolbar
+layout activity_checklist
 layout activity_main
 layout activity_notes_list
+layout item_checklist
 layout item_note
 menu menu_main
 menu menu_notes_list
@@ -46,6 +54,9 @@ string action_save
 string action_theme
 string add_new_note
 string app_name
+string choose_note_type
+string create_checklist
+string create_note
 string hint_start_typing
 string no_notes_yet_ntap_to_create_one
 string theme_dark
