@@ -61,6 +61,16 @@ class ChecklistAdapter(
         holder.deleteButton.setOnClickListener {
             onItemDeleted(item)
         }
+        
+        // Auto-focus if this is a newly added item
+        if (item.shouldAutoFocus) {
+            holder.editText.requestFocus()
+            holder.editText.post {
+                val imm = holder.editText.context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
+                imm.showSoftInput(holder.editText, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT)
+            }
+            item.shouldAutoFocus = false
+        }
     }
 
     override fun getItemCount(): Int = items.size

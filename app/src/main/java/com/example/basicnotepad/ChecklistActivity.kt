@@ -95,7 +95,7 @@ class ChecklistActivity : AppCompatActivity() {
     }
     
     private fun addNewItem() {
-        val newItem = ChecklistItem()
+        val newItem = ChecklistItem(shouldAutoFocus = true)
         checklistAdapter.addItem(newItem)
         hasUnsavedChanges = true
         autoSave()
@@ -136,7 +136,7 @@ class ChecklistActivity : AppCompatActivity() {
             .setMessage("Are you sure you want to clear all items?")
             .setPositiveButton("Clear") { _, _ ->
                 currentNote?.checklistItems?.clear()
-                currentNote?.checklistItems?.add(ChecklistItem())
+                currentNote?.checklistItems?.add(ChecklistItem(shouldAutoFocus = true))
                 checklistAdapter.notifyDataSetChanged()
                 saveChecklist()
                 Toast.makeText(this, "Checklist cleared", Toast.LENGTH_SHORT).show()

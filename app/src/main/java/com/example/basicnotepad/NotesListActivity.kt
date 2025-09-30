@@ -103,7 +103,7 @@ class NotesListActivity : AppCompatActivity() {
     
     private fun createNewChecklist() {
         val newNote = Note(isChecklist = true)
-        newNote.checklistItems.add(ChecklistItem())
+        newNote.checklistItems.add(ChecklistItem(shouldAutoFocus = true))
         noteManager.saveNote(newNote)
         openNote(newNote)
     }
