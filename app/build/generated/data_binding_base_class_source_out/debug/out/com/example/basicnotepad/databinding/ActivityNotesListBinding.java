@@ -4,6 +4,7 @@ package com.example.basicnotepad.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.basicnotepad.R;
-import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -32,16 +32,16 @@ public final class ActivityNotesListBinding implements ViewBinding {
   public final RecyclerView notesRecyclerView;
 
   @NonNull
-  public final MaterialToolbar toolbar;
+  public final Button themeButton;
 
   private ActivityNotesListBinding(@NonNull CoordinatorLayout rootView,
       @NonNull TextView emptyStateTextView, @NonNull FloatingActionButton fabAddNote,
-      @NonNull RecyclerView notesRecyclerView, @NonNull MaterialToolbar toolbar) {
+      @NonNull RecyclerView notesRecyclerView, @NonNull Button themeButton) {
     this.rootView = rootView;
     this.emptyStateTextView = emptyStateTextView;
     this.fabAddNote = fabAddNote;
     this.notesRecyclerView = notesRecyclerView;
-    this.toolbar = toolbar;
+    this.themeButton = themeButton;
   }
 
   @Override
@@ -89,14 +89,14 @@ public final class ActivityNotesListBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.toolbar;
-      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
-      if (toolbar == null) {
+      id = R.id.themeButton;
+      Button themeButton = ViewBindings.findChildViewById(rootView, id);
+      if (themeButton == null) {
         break missingId;
       }
 
       return new ActivityNotesListBinding((CoordinatorLayout) rootView, emptyStateTextView,
-          fabAddNote, notesRecyclerView, toolbar);
+          fabAddNote, notesRecyclerView, themeButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

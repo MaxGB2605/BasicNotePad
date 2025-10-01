@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -15,6 +15,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class MainActivity : AppCompatActivity() {
     
     private lateinit var noteEditText: EditText
+    private lateinit var backButton: ImageButton
+    private lateinit var saveButton: Button
+    private lateinit var themeButton: Button
+    private lateinit var clearButton: Button
     private lateinit var noteManager: NoteManager
     private lateinit var themeManager: ThemeManager
     private var currentNote: Note? = null
@@ -24,11 +28,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
-        // Set up toolbar
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        
         noteEditText = findViewById(R.id.noteEditText)
+        backButton = findViewById(R.id.backButton)
+        saveButton = findViewById(R.id.saveButton)
+        themeButton = findViewById(R.id.themeButton)
+        clearButton = findViewById(R.id.clearButton)
         noteManager = NoteManager(this)
         themeManager = ThemeManager(this)
         
@@ -44,6 +48,25 @@ class MainActivity : AppCompatActivity() {
         
         // Load note content
         loadNote()
+        
+        // Set up button click listeners
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
+        
+        saveButton.setOnClickListener {
+            saveNote()
+            hasUnsavedChanges = false
+            Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show()
+        }
+        
+        themeButton.setOnClickListener {
+            themeManager.showThemeDialog()
+        }
+        
+        clearButton.setOnClickListener {
+            clearNote()
+        }
         
         // Add text change listener for auto-save
         noteEditText.addTextChangedListener(object : TextWatcher {
@@ -96,34 +119,6 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
     
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-    
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            R.id.action_save -> {
-                saveNote()
-                hasUnsavedChanges = false
-                Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.action_theme -> {
-                themeManager.showThemeDialog()
-                true
-            }
-            R.id.action_clear -> {
-                clearNote()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
     
     override fun onPause() {
         super.onPause()

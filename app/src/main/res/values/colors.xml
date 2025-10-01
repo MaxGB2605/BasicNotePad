@@ -8,17 +8,23 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- Light theme colors -->
-    <color name="light_background">#FFFFFFFF</color>
-    <color name="light_surface">#FFFFFFFF</color>
-    <color name="light_text">#FF000000</color>
-    <color name="light_text_secondary">#666666</color>
-    <color name="light_hint">#999999</color>
+    <!-- Light theme colors - Warm Green Shades -->
+    <color name="light_background">#F5F9F3</color>        <!-- Very light warm green -->
+    <color name="light_surface">#E8F5E3</color>           <!-- Light sage green -->
+    <color name="light_primary">#7CB342</color>           <!-- Medium warm green -->
+    <color name="light_primary_dark">#558B2F</color>      <!-- Darker warm green -->
+    <color name="light_accent">#9CCC65</color>            <!-- Light lime green -->
+    <color name="light_text">#2E4A1F</color>              <!-- Dark green text -->
+    <color name="light_text_secondary">#5A7A3C</color>    <!-- Medium green text -->
+    <color name="light_hint">#A5C68D</color>              <!-- Light green hint -->
     
-    <!-- Dark theme colors -->
-    <color name="dark_background">#FF121212</color>
-    <color name="dark_surface">#FF1E1E1E</color>
-    <color name="dark_text">#FFFFFFFF</color>
-    <color name="dark_text_secondary">#B3B3B3</color>
-    <color name="dark_hint">#808080</color>
+    <!-- Dark theme colors - Gray Shades -->
+    <color name="dark_background">#1A1A1A</color>         <!-- Very dark gray -->
+    <color name="dark_surface">#2D2D2D</color>            <!-- Dark gray -->
+    <color name="dark_primary">#404040</color>            <!-- Medium gray -->
+    <color name="dark_primary_dark">#1A1A1A</color>       <!-- Very dark gray -->
+    <color name="dark_accent">#6B6B6B</color>             <!-- Light gray accent -->
+    <color name="dark_text">#E8E8E8</color>               <!-- Light gray text -->
+    <color name="dark_text_secondary">#B0B0B0</color>     <!-- Medium gray text -->
+    <color name="dark_hint">#707070</color>               <!-- Gray hint -->
 </resources>

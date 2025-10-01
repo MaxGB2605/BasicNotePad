@@ -1,94 +1,98 @@
 [
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/drawable_ic_launcher_foreground_foreground.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/drawable/ic_launcher_foreground_foreground.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/layout_activity_main.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/layout/activity_main.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-anydpi-v26_ic_launcher_foreground_round.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-anydpi-v26\\ic_launcher_foreground_round.xml"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-anydpi-v26_ic_launcher_foreground_round.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-anydpi-v26/ic_launcher_foreground_round.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-mdpi_ic_launcher_foreground_round.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-mdpi/ic_launcher_foreground_round.webp"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-hdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/menu_menu_main.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/menu/menu_main.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-hdpi_ic_launcher_foreground_round.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-hdpi/ic_launcher_foreground_round.webp"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-mdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-mdpi\\ic_launcher_foreground_round.webp"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-xxxhdpi_ic_launcher_foreground_round.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-xxxhdpi/ic_launcher_foreground_round.webp"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-hdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-hdpi\\ic_launcher_foreground_round.webp"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/layout_item_note.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/layout/item_note.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-xhdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-xhdpi_ic_launcher_foreground_round.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-xhdpi/ic_launcher_foreground_round.webp"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-anydpi-v26_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-anydpi-v26\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/menu_menu_notes_list.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/menu/menu_notes_list.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\menu_menu_main.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\layout_item_checklist.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\layout\\item_checklist.xml"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-xhdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-xhdpi\\ic_launcher_foreground_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\layout_activity_notes_list.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\layout\\activity_notes_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-xxxhdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-xxxhdpi\\ic_launcher_foreground_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\layout_item_note.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\layout\\item_note.xml"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\layout_activity_checklist.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\layout\\activity_checklist.xml"
     },
     {
         "merged": "com.example.basicnotepad.app-debug-32:/layout_activity_notes_list.xml.flat",
         "source": "com.example.basicnotepad.app-main-34:/layout/activity_notes_list.xml"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/layout_item_checklist.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/layout/item_checklist.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\drawable_ic_launcher_foreground_foreground.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\drawable\\ic_launcher_foreground_foreground.xml"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-hdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\menu_menu_notes_list.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\menu\\menu_notes_list.xml"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-xxhdpi_ic_launcher_foreground_round.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-xxhdpi/ic_launcher_foreground_round.webp"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\mipmap-xxhdpi_ic_launcher_foreground_round.webp.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\mipmap-xxhdpi\\ic_launcher_foreground_round.webp"
     },
     {
-        "merged": "com.example.basicnotepad.app-debug-32:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/drawable/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-anydpi-v26/ic_launcher.xml"
-    },
-    {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-anydpi-v26/ic_launcher_round.xml"
-    },
-    {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-mdpi/ic_launcher_foreground.webp"
-    },
-    {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-xxhdpi/ic_launcher_foreground.webp"
-    },
-    {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
-    },
-    {
-        "merged": "com.example.basicnotepad.app-debug-32:/layout_activity_checklist.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/layout/activity_checklist.xml"
-    },
-    {
-        "merged": "com.example.basicnotepad.app-debug-32:/mipmap-anydpi-v26_ic_launcher_foreground.xml.flat",
-        "source": "com.example.basicnotepad.app-main-34:/mipmap-anydpi-v26/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-debug-32:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\mbrazhko\\.gradle\\daemon\\8.9\\com.example.basicnotepad.app-main-34:\\layout\\activity_main.xml"
     }
 ]

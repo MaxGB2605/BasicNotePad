@@ -2,9 +2,8 @@ package com.example.basicnotepad
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +16,7 @@ class NotesListActivity : AppCompatActivity() {
     private lateinit var notesRecyclerView: RecyclerView
     private lateinit var emptyStateTextView: TextView
     private lateinit var fabAddNote: FloatingActionButton
+    private lateinit var themeButton: Button
     private lateinit var notesAdapter: NotesAdapter
     private lateinit var noteManager: NoteManager
     private lateinit var themeManager: ThemeManager
@@ -25,8 +25,6 @@ class NotesListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes_list)
         
-        setSupportActionBar(findViewById(R.id.toolbar))
-        
         noteManager = NoteManager(this)
         themeManager = ThemeManager(this)
         themeManager.applyTheme(themeManager.getCurrentTheme())
@@ -34,11 +32,16 @@ class NotesListActivity : AppCompatActivity() {
         notesRecyclerView = findViewById(R.id.notesRecyclerView)
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
         fabAddNote = findViewById(R.id.fabAddNote)
+        themeButton = findViewById(R.id.themeButton)
         
         setupRecyclerView()
         
         fabAddNote.setOnClickListener {
             showNoteTypeDialog()
+        }
+        
+        themeButton.setOnClickListener {
+            themeManager.showThemeDialog()
         }
     }
     
@@ -131,18 +134,4 @@ class NotesListActivity : AppCompatActivity() {
             .show()
     }
     
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_notes_list, menu)
-        return true
-    }
-    
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_theme -> {
-                themeManager.showThemeDialog()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
 }

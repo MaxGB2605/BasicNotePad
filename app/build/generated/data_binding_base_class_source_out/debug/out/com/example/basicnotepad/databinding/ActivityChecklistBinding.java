@@ -4,7 +4,9 @@ package com.example.basicnotepad.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.basicnotepad.R;
-import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -23,7 +24,13 @@ public final class ActivityChecklistBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
+  public final ImageButton backButton;
+
+  @NonNull
   public final MaterialButton buttonAddItem;
+
+  @NonNull
+  public final Button clearButton;
 
   @NonNull
   public final EditText editTextTitle;
@@ -32,16 +39,23 @@ public final class ActivityChecklistBinding implements ViewBinding {
   public final RecyclerView recyclerViewChecklist;
 
   @NonNull
-  public final MaterialToolbar toolbar;
+  public final Button saveButton;
 
-  private ActivityChecklistBinding(@NonNull LinearLayout rootView,
-      @NonNull MaterialButton buttonAddItem, @NonNull EditText editTextTitle,
-      @NonNull RecyclerView recyclerViewChecklist, @NonNull MaterialToolbar toolbar) {
+  @NonNull
+  public final Button themeButton;
+
+  private ActivityChecklistBinding(@NonNull LinearLayout rootView, @NonNull ImageButton backButton,
+      @NonNull MaterialButton buttonAddItem, @NonNull Button clearButton,
+      @NonNull EditText editTextTitle, @NonNull RecyclerView recyclerViewChecklist,
+      @NonNull Button saveButton, @NonNull Button themeButton) {
     this.rootView = rootView;
+    this.backButton = backButton;
     this.buttonAddItem = buttonAddItem;
+    this.clearButton = clearButton;
     this.editTextTitle = editTextTitle;
     this.recyclerViewChecklist = recyclerViewChecklist;
-    this.toolbar = toolbar;
+    this.saveButton = saveButton;
+    this.themeButton = themeButton;
   }
 
   @Override
@@ -71,9 +85,21 @@ public final class ActivityChecklistBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.backButton;
+      ImageButton backButton = ViewBindings.findChildViewById(rootView, id);
+      if (backButton == null) {
+        break missingId;
+      }
+
       id = R.id.buttonAddItem;
       MaterialButton buttonAddItem = ViewBindings.findChildViewById(rootView, id);
       if (buttonAddItem == null) {
+        break missingId;
+      }
+
+      id = R.id.clearButton;
+      Button clearButton = ViewBindings.findChildViewById(rootView, id);
+      if (clearButton == null) {
         break missingId;
       }
 
@@ -89,14 +115,20 @@ public final class ActivityChecklistBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.toolbar;
-      MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
-      if (toolbar == null) {
+      id = R.id.saveButton;
+      Button saveButton = ViewBindings.findChildViewById(rootView, id);
+      if (saveButton == null) {
         break missingId;
       }
 
-      return new ActivityChecklistBinding((LinearLayout) rootView, buttonAddItem, editTextTitle,
-          recyclerViewChecklist, toolbar);
+      id = R.id.themeButton;
+      Button themeButton = ViewBindings.findChildViewById(rootView, id);
+      if (themeButton == null) {
+        break missingId;
+      }
+
+      return new ActivityChecklistBinding((LinearLayout) rootView, backButton, buttonAddItem,
+          clearButton, editTextTitle, recyclerViewChecklist, saveButton, themeButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

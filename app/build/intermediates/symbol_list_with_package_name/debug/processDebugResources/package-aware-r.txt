@@ -1368,8 +1368,11 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color dark_accent
 color dark_background
 color dark_hint
+color dark_primary
+color dark_primary_dark
 color dark_surface
 color dark_text
 color dark_text_secondary
@@ -1423,8 +1426,11 @@ color highlighted_text_material_dark
 color highlighted_text_material_light
 color ic_launcher_background
 color ic_launcher_foreground_background
+color light_accent
 color light_background
 color light_hint
+color light_primary
+color light_primary_dark
 color light_surface
 color light_text
 color light_text_secondary
@@ -3125,7 +3131,6 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
-id action_clear
 id action_container
 id action_context_bar
 id action_divider
@@ -3135,7 +3140,6 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
-id action_save
 id action_text
 id action_theme
 id actions
@@ -3157,6 +3161,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3188,6 +3193,7 @@ id checkboxItem
 id checked
 id chronometer
 id circle_center
+id clearButton
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -3451,6 +3457,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id saveButton
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3542,12 +3549,12 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id themeButton
 id time
 id title
 id titleDividerNoCustom
 id title_template
 id toggle
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -3817,6 +3824,7 @@ string abc_toolbar_collapse_description
 string action_clear
 string action_save
 string action_theme
+string add_item
 string add_new_note
 string androidx_startup
 string app_name
@@ -3841,6 +3849,7 @@ string choose_note_type
 string clear_text_end_icon_content_description
 string create_checklist
 string create_note
+string delete_item
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -3850,6 +3859,7 @@ string hide_bottom_view_on_scroll_behavior
 string hint_start_typing
 string icon_content_description
 string item_view_role_description
+string list_item
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium
 string m3_ref_typeface_brand_regular
@@ -3951,6 +3961,8 @@ string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string no_notes_yet_ntap_to_create_one
+string note_preview_text
+string note_title
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -3967,6 +3979,7 @@ string theme_dark
 string theme_dialog_title
 string theme_light
 string theme_system
+string title
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -4708,6 +4721,7 @@ style ThemeOverlay_MaterialComponents_TimePicker_Display_TextInputEditText
 style ThemeOverlay_MaterialComponents_Toolbar_Popup_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Surface
+style Widget_App_Button_TextButton
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
 style Widget_AppCompat_ActionBar_TabBar

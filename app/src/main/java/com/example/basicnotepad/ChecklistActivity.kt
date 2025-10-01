@@ -3,9 +3,9 @@ package com.example.basicnotepad
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +18,10 @@ class ChecklistActivity : AppCompatActivity() {
     private lateinit var editTextTitle: EditText
     private lateinit var recyclerView: RecyclerView
     private lateinit var buttonAddItem: MaterialButton
+    private lateinit var backButton: ImageButton
+    private lateinit var saveButton: Button
+    private lateinit var themeButton: Button
+    private lateinit var clearButton: Button
     private lateinit var checklistAdapter: ChecklistAdapter
     private lateinit var noteManager: NoteManager
     private lateinit var themeManager: ThemeManager
@@ -28,12 +32,13 @@ class ChecklistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checklist)
         
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        
         editTextTitle = findViewById(R.id.editTextTitle)
         recyclerView = findViewById(R.id.recyclerViewChecklist)
         buttonAddItem = findViewById(R.id.buttonAddItem)
+        backButton = findViewById(R.id.backButton)
+        saveButton = findViewById(R.id.saveButton)
+        themeButton = findViewById(R.id.themeButton)
+        clearButton = findViewById(R.id.clearButton)
         
         noteManager = NoteManager(this)
         themeManager = ThemeManager(this)
@@ -62,6 +67,25 @@ class ChecklistActivity : AppCompatActivity() {
                 autoSave()
             }
         })
+        
+        // Set up button click listeners
+        backButton.setOnClickListener {
+            onBackPressed()
+        }
+        
+        saveButton.setOnClickListener {
+            saveChecklist()
+            hasUnsavedChanges = false
+            Toast.makeText(this, "Checklist saved", Toast.LENGTH_SHORT).show()
+        }
+        
+        themeButton.setOnClickListener {
+            themeManager.showThemeDialog()
+        }
+        
+        clearButton.setOnClickListener {
+            clearChecklist()
+        }
         
         // Add item button
         buttonAddItem.setOnClickListener {
@@ -145,34 +169,6 @@ class ChecklistActivity : AppCompatActivity() {
             .show()
     }
     
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-    
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            R.id.action_save -> {
-                saveChecklist()
-                hasUnsavedChanges = false
-                Toast.makeText(this, "Checklist saved", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.action_theme -> {
-                themeManager.showThemeDialog()
-                true
-            }
-            R.id.action_clear -> {
-                clearChecklist()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
     
     override fun onPause() {
         super.onPause()

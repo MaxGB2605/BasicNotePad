@@ -14,4 +14,10 @@
     <string name="create_note">Note</string>
     <string name="create_checklist">Checklist</string>
     <string name="choose_note_type">Choose Note Type</string>
+    <string name="title">Title</string>
+    <string name="add_item">+ Add Item</string>
+    <string name="delete_item">Delete item</string>
+    <string name="list_item">List item</string>
+    <string name="note_title">Note Title</string>
+    <string name="note_preview_text">Note preview text...</string>
 </resources>
