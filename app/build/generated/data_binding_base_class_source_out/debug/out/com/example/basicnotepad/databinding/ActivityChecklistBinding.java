@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,9 @@ public final class ActivityChecklistBinding implements ViewBinding {
   public final EditText editTextTitle;
 
   @NonNull
+  public final TextView emptyStateTextView;
+
+  @NonNull
   public final RecyclerView recyclerViewChecklist;
 
   @NonNull
@@ -46,13 +50,15 @@ public final class ActivityChecklistBinding implements ViewBinding {
 
   private ActivityChecklistBinding(@NonNull LinearLayout rootView, @NonNull ImageButton backButton,
       @NonNull MaterialButton buttonAddItem, @NonNull Button clearButton,
-      @NonNull EditText editTextTitle, @NonNull RecyclerView recyclerViewChecklist,
-      @NonNull Button saveButton, @NonNull Button themeButton) {
+      @NonNull EditText editTextTitle, @NonNull TextView emptyStateTextView,
+      @NonNull RecyclerView recyclerViewChecklist, @NonNull Button saveButton,
+      @NonNull Button themeButton) {
     this.rootView = rootView;
     this.backButton = backButton;
     this.buttonAddItem = buttonAddItem;
     this.clearButton = clearButton;
     this.editTextTitle = editTextTitle;
+    this.emptyStateTextView = emptyStateTextView;
     this.recyclerViewChecklist = recyclerViewChecklist;
     this.saveButton = saveButton;
     this.themeButton = themeButton;
@@ -109,6 +115,12 @@ public final class ActivityChecklistBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.emptyStateTextView;
+      TextView emptyStateTextView = ViewBindings.findChildViewById(rootView, id);
+      if (emptyStateTextView == null) {
+        break missingId;
+      }
+
       id = R.id.recyclerViewChecklist;
       RecyclerView recyclerViewChecklist = ViewBindings.findChildViewById(rootView, id);
       if (recyclerViewChecklist == null) {
@@ -128,7 +140,8 @@ public final class ActivityChecklistBinding implements ViewBinding {
       }
 
       return new ActivityChecklistBinding((LinearLayout) rootView, backButton, buttonAddItem,
-          clearButton, editTextTitle, recyclerViewChecklist, saveButton, themeButton);
+          clearButton, editTextTitle, emptyStateTextView, recyclerViewChecklist, saveButton,
+          themeButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

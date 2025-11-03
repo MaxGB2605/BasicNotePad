@@ -2,12 +2,13 @@ package com.example.basicnotepad
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.edit
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ThemeManager(private val context: Context) {
     
-    private val PREFS_NAME = "ThemePrefs"
-    private val THEME_KEY = "app_theme"
+    private val prefsName = "ThemePrefs"
+    private val themeKey = "app_theme"
     
     companion object {
         const val THEME_LIGHT = 0
@@ -16,13 +17,13 @@ class ThemeManager(private val context: Context) {
     }
     
     fun getCurrentTheme(): Int {
-        val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        return sharedPreferences.getInt(THEME_KEY, THEME_SYSTEM)
+        val sharedPreferences = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+        return sharedPreferences.getInt(themeKey, THEME_SYSTEM)
     }
     
     fun setTheme(theme: Int) {
-        val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        sharedPreferences.edit().putInt(THEME_KEY, theme).apply()
+        context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+            .edit { putInt(themeKey, theme) }
         applyTheme(theme)
     }
     

@@ -2,13 +2,16 @@ package com.example.basicnotepad
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import android.view.View
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class NotesListActivity : AppCompatActivity() {
@@ -99,25 +102,71 @@ class NotesListActivity : AppCompatActivity() {
     }
     
     private fun createNewNote() {
-        val newNote = Note()
-        noteManager.saveNote(newNote)
-        openNote(newNote)
+        showCreateNoteDialog(isChecklist = false)
     }
     
     private fun createNewChecklist() {
-        val newNote = Note(isChecklist = true)
-        newNote.checklistItems.add(ChecklistItem(shouldAutoFocus = true))
-        noteManager.saveNote(newNote)
-        openNote(newNote)
+        showCreateNoteDialog(isChecklist = true)
+    }
+    
+    private fun showCreateNoteDialog(isChecklist: Boolean) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_create_note, null)
+        val dialog = MaterialAlertDialogBuilder(this)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+            
+        val titleText = dialogView.findViewById<TextView>(R.id.dialogTitle)
+        val titleInput = dialogView.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.noteTitleInput)
+        val createButton = dialogView.findViewById<Button>(R.id.createButton)
+        
+        // Set dialog title based on note type
+        titleText.text = if (isChecklist) "Create New Checklist" else "Create New Note"
+        titleInput.hint = if (isChecklist) "Checklist Title" else "Note Title"
+        
+        // Set focus and show keyboard
+        titleInput.requestFocus()
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        
+        createButton.setOnClickListener {
+            val title = titleInput.text.toString().trim()
+            if (title.isNotEmpty()) {
+                val newNote = if (isChecklist) {
+                    Note(title = title, isChecklist = true)
+                } else {
+                    Note(title = title)
+                }
+                noteManager.saveNote(newNote)
+                openNote(newNote)
+                dialog.dismiss()
+            } else {
+                titleInput.error = "Title cannot be empty"
+            }
+        }
+        
+        // Handle keyboard done/enter key
+        titleInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                createButton.performClick()
+                true
+            } else {
+                false
+            }
+        }
+        
+        dialog.show()
     }
     
     private fun openNote(note: Note) {
         val intent = if (note.isChecklist) {
-            Intent(this, ChecklistActivity::class.java)
+            Intent(this, ChecklistActivity::class.java).apply {
+                putExtra("NOTE_ID", note.id)
+            }
         } else {
-            Intent(this, MainActivity::class.java)
+            Intent(this, MainActivity::class.java).apply {
+                putExtra("NOTE_ID", note.id)
+            }
         }
-        intent.putExtra("NOTE_ID", note.id)
         startActivity(intent)
     }
     

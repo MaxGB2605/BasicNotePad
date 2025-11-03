@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:ns1="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
     <color name="dark_accent">#6B6B6B</color>
     <color name="dark_background">#1A1A1A</color>
@@ -28,18 +28,26 @@
     <string name="action_clear">Clear</string>
     <string name="action_save">Save</string>
     <string name="action_theme">Theme</string>
+    <string name="add">Add</string>
     <string name="add_item">+ Add Item</string>
+    <string name="add_new_item">Add New Item</string>
     <string name="add_new_note">Add new note</string>
     <string name="app_name">Notepad</string>
     <string name="choose_note_type">Choose Note Type</string>
+    <string name="create">Create</string>
     <string name="create_checklist">Checklist</string>
+    <string name="create_new_note">Create New Note</string>
     <string name="create_note">Note</string>
     <string name="delete_item">Delete item</string>
     <string name="hint_start_typing">Start typing your note…</string>
+    <string name="item_content">Item content</string>
+    <string name="jan_01_2024_12_00">Jan 01, 2024 12:00</string>
     <string name="list_item">List item</string>
     <string name="no_notes_yet_ntap_to_create_one">No notes yet.\nTap + to create one!</string>
-    <string name="note_preview_text">Note preview text...</string>
+    <string name="note_content_hint" ns1:ignore="TypographyEllipsis">Start typing your note...</string>
+    <string name="note_preview_text" ns1:ignore="TypographyEllipsis">Note preview text...</string>
     <string name="note_title">Note Title</string>
+    <string name="note_title_hint">Title</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_dialog_title">Choose Theme</string>
     <string name="theme_light">Light</string>

@@ -82,13 +82,29 @@
         android:background="?android:attr/textColorHint"
         android:alpha="0.3" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewChecklist"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp"
-        android:clipToPadding="false" />
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewChecklist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:clipToPadding="false" />
+
+        <TextView
+            android:id="@+id/emptyStateTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="No items yet. Tap + to add your first item."
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:textColor="?android:attr/textColorSecondary" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

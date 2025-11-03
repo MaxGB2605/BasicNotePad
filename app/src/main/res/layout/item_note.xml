@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Jan 01, 2024 12:00"
+            android:text="@string/jan_01_2024_12_00"
             android:textSize="12sp"
             android:textColor="?android:attr/textColorTertiary" />
 

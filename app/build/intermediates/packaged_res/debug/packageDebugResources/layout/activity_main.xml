@@ -62,18 +62,47 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/noteEditText"
+        android:id="@+id/noteTitleEditText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?android:attr/colorBackground"
-        android:gravity="top|start"
-        android:hint="@string/hint_start_typing"
-        android:inputType="textMultiLine|textCapSentences"
-        android:padding="16dp"
-        android:textSize="16sp"
+        android:layout_height="wrap_content"
+        android:hint="@string/note_title_hint"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:inputType="text"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:textColor="?android:attr/textColorPrimary"
         android:textColorHint="?android:attr/textColorHint"
+        android:importantForAutofill="no"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/dividerVertical" />
+
+    <EditText
+        android:id="@+id/noteEditText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@null"
+        android:gravity="top|start"
+        android:hint="@string/note_content_hint"
+        android:padding="16dp"
+        android:textSize="16sp"
         android:scrollbars="vertical"
-        android:importantForAutofill="no" />
+        android:overScrollMode="always"
+        android:isScrollContainer="true"
+        android:scrollbarStyle="insideInset"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:minHeight="48dp"
+        android:focusableInTouchMode="true"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textColorHint="?android:attr/textColorHint" />
 
 </LinearLayout>

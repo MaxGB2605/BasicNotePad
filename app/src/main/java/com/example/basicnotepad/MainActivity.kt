@@ -14,6 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
     
+    private lateinit var noteTitleEditText: EditText
     private lateinit var noteEditText: EditText
     private lateinit var backButton: ImageButton
     private lateinit var saveButton: Button
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
+        noteTitleEditText = findViewById(R.id.noteTitleEditText)
         noteEditText = findViewById(R.id.noteEditText)
         backButton = findViewById(R.id.backButton)
         saveButton = findViewById(R.id.saveButton)
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             saveNote()
             hasUnsavedChanges = false
             Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show()
+            finish()  // Return to previous activity
         }
         
         themeButton.setOnClickListener {
@@ -68,8 +71,8 @@ class MainActivity : AppCompatActivity() {
             clearNote()
         }
         
-        // Add text change listener for auto-save
-        noteEditText.addTextChangedListener(object : TextWatcher {
+        // Add text change listener for auto-save on content
+        val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -81,7 +84,10 @@ class MainActivity : AppCompatActivity() {
                 noteEditText.removeCallbacks(autoSaveRunnable)
                 noteEditText.postDelayed(autoSaveRunnable, 2000)
             }
-        })
+        }
+        
+        noteTitleEditText.addTextChangedListener(textWatcher)
+        noteEditText.addTextChangedListener(textWatcher)
     }
     
     private val autoSaveRunnable = Runnable {
@@ -93,6 +99,7 @@ class MainActivity : AppCompatActivity() {
     
     private fun saveNote() {
         currentNote?.let { note ->
+            note.title = noteTitleEditText.text.toString()
             note.content = noteEditText.text.toString()
             noteManager.saveNote(note)
         }
@@ -100,6 +107,7 @@ class MainActivity : AppCompatActivity() {
     
     private fun loadNote() {
         currentNote?.let { note ->
+            noteTitleEditText.setText(note.title)
             noteEditText.setText(note.content)
             noteEditText.setSelection(note.content.length)
         }
@@ -109,8 +117,9 @@ class MainActivity : AppCompatActivity() {
     private fun clearNote() {
         MaterialAlertDialogBuilder(this)
             .setTitle("Clear Note")
-            .setMessage("Are you sure you want to clear all text?")
+            .setMessage("Are you sure you want to clear this note?")
             .setPositiveButton("Clear") { _, _ ->
+                noteTitleEditText.text.clear()
                 noteEditText.text.clear()
                 saveNote()
                 Toast.makeText(this, "Note cleared", Toast.LENGTH_SHORT).show()

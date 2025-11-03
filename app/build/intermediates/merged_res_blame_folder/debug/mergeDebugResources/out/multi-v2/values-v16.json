@@ -4,7 +4,7 @@
             "outputFile": "com.example.basicnotepad.app-mergeDebugResources-30:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\mbrazhko\\.gradle\\caches\\8.9\\transforms\\e84d5d8241ed699291a1fdcb9755b25e\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Max-WorkPC\\.gradle\\caches\\8.11.1\\transforms\\3774d7ca19fc69bf032e4f857d620cf2\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\mbrazhko\\.gradle\\caches\\8.9\\transforms\\3305fe73d997438e7392ad090566afe3\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Max-WorkPC\\.gradle\\caches\\8.11.1\\transforms\\1b99129fa0124e0061f3cece7da35e06\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

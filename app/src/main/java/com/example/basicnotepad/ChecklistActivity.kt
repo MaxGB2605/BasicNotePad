@@ -3,13 +3,18 @@ package com.example.basicnotepad
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -22,6 +27,7 @@ class ChecklistActivity : AppCompatActivity() {
     private lateinit var saveButton: Button
     private lateinit var themeButton: Button
     private lateinit var clearButton: Button
+    private lateinit var emptyStateTextView: TextView
     private lateinit var checklistAdapter: ChecklistAdapter
     private lateinit var noteManager: NoteManager
     private lateinit var themeManager: ThemeManager
@@ -39,6 +45,7 @@ class ChecklistActivity : AppCompatActivity() {
         saveButton = findViewById(R.id.saveButton)
         themeButton = findViewById(R.id.themeButton)
         clearButton = findViewById(R.id.clearButton)
+        emptyStateTextView = findViewById(R.id.emptyStateTextView)
         
         noteManager = NoteManager(this)
         themeManager = ThemeManager(this)
@@ -50,7 +57,9 @@ class ChecklistActivity : AppCompatActivity() {
         }
         
         if (currentNote == null) {
-            currentNote = Note(isChecklist = true)
+            currentNote = Note(isChecklist = true).apply {
+                checklistItems = mutableListOf()
+            }
         }
         
         loadChecklist()
@@ -70,11 +79,11 @@ class ChecklistActivity : AppCompatActivity() {
         
         // Set up button click listeners
         backButton.setOnClickListener {
-            onBackPressed()
+            (onBackPressedDispatcher.onBackPressed())
         }
         
         saveButton.setOnClickListener {
-            saveChecklist()
+            saveChecklist(shouldFinish = true)
             hasUnsavedChanges = false
             Toast.makeText(this, "Checklist saved", Toast.LENGTH_SHORT).show()
         }
@@ -89,7 +98,7 @@ class ChecklistActivity : AppCompatActivity() {
         
         // Add item button
         buttonAddItem.setOnClickListener {
-            addNewItem()
+            showAddItemDialog()
         }
     }
     
@@ -116,24 +125,76 @@ class ChecklistActivity : AppCompatActivity() {
             editTextTitle.setText(note.title)
         }
         hasUnsavedChanges = false
+        updateEmptyState()
     }
     
-    private fun addNewItem() {
-        val newItem = ChecklistItem(shouldAutoFocus = true)
-        checklistAdapter.addItem(newItem)
-        hasUnsavedChanges = true
-        autoSave()
+    private fun showAddItemDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_add_checklist_item, null)
+        val dialog = MaterialAlertDialogBuilder(this)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+            
+        val contentInput = dialogView.findViewById<TextInputEditText>(R.id.itemContentInput)
+        val addButton = dialogView.findViewById<Button>(R.id.addButton)
+        
+        // Show keyboard
+        contentInput.requestFocus()
+        dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        
+        addButton.setOnClickListener {
+            val content = contentInput.text.toString().trim()
+            if (content.isNotEmpty()) {
+                addNewItem(content)
+                dialog.dismiss()
+            } else {
+                contentInput.error = "Please enter some text"
+            }
+        }
+        
+        // Handle keyboard done/enter key
+        contentInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                addButton.performClick()
+                true
+            } else {
+                false
+            }
+        }
+        
+        dialog.show()
+    }
+    
+    private fun addNewItem(content: String = "") {
+        currentNote?.let { note ->
+            val newItem = ChecklistItem(
+                text = content,
+                isChecked = false,
+                shouldAutoFocus = content.isEmpty()
+            )
+            note.checklistItems.add(newItem)
+            val position = note.checklistItems.size - 1
+            checklistAdapter.notifyItemInserted(position)
+            
+            // Update empty state
+            updateEmptyState()
+            
+            hasUnsavedChanges = true
+            autoSave()
+        }
     }
     
     private fun deleteItem(item: ChecklistItem) {
-        if (currentNote?.checklistItems?.size ?: 0 <= 1) {
-            Toast.makeText(this, "Checklist must have at least one item", Toast.LENGTH_SHORT).show()
-            return
+        currentNote?.let { note ->
+            val position = note.checklistItems.indexOf(item)
+            if (position != -1) {
+                note.checklistItems.removeAt(position)
+                checklistAdapter.notifyItemRemoved(position)
+                hasUnsavedChanges = true
+                autoSave()
+                updateEmptyState()
+            }
         }
-        
-        checklistAdapter.removeItem(item)
-        hasUnsavedChanges = true
-        saveChecklist()
     }
     
     private fun autoSave() {
@@ -143,14 +204,18 @@ class ChecklistActivity : AppCompatActivity() {
     
     private val autoSaveRunnable = Runnable {
         if (hasUnsavedChanges) {
-            saveChecklist()
+            saveChecklist(shouldFinish = false)
             hasUnsavedChanges = false
         }
     }
     
-    private fun saveChecklist() {
+    private fun saveChecklist(shouldFinish: Boolean = false) {
         currentNote?.let { note ->
             noteManager.saveNote(note)
+            // Only finish if explicitly saved (not auto-save)
+            if (shouldFinish) {
+                finish()
+            }
         }
     }
     
@@ -159,16 +224,26 @@ class ChecklistActivity : AppCompatActivity() {
             .setTitle("Clear Checklist")
             .setMessage("Are you sure you want to clear all items?")
             .setPositiveButton("Clear") { _, _ ->
-                currentNote?.checklistItems?.clear()
-                currentNote?.checklistItems?.add(ChecklistItem(shouldAutoFocus = true))
-                checklistAdapter.notifyDataSetChanged()
-                saveChecklist()
-                Toast.makeText(this, "Checklist cleared", Toast.LENGTH_SHORT).show()
+                val itemCount = currentNote?.checklistItems?.size ?: 0
+                if (itemCount > 0) {
+                    currentNote?.checklistItems?.clear()
+                    checklistAdapter.notifyItemRangeRemoved(0, itemCount)
+                    updateEmptyState()
+                    hasUnsavedChanges = true
+                    autoSave()
+                }
             }
             .setNegativeButton("Cancel", null)
             .show()
     }
     
+    private fun updateEmptyState() {
+        if (currentNote?.checklistItems?.isEmpty() == true) {
+            emptyStateTextView.visibility = View.VISIBLE
+        } else {
+            emptyStateTextView.visibility = View.GONE
+        }
+    }
     
     override fun onPause() {
         super.onPause()
