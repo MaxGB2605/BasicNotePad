@@ -4,7 +4,7 @@
             "outputFile": "com.example.basicnotepad.app-mergeDebugResources-30:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Max-WorkPC\\.gradle\\caches\\8.11.1\\transforms\\b32f672338875f29946b94a2795e87f2\\transformed\\material-1.10.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\Max-WorkPC\\.gradle\\caches\\8.13\\transforms\\6acd2798a46c8e8dcbd9ab0ea4969c26\\transformed\\material-1.10.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
