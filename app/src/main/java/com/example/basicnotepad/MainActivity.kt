@@ -12,7 +12,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener {
     
     private lateinit var noteTitleEditText: EditText
     private lateinit var noteEditText: EditText
@@ -28,8 +28,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var onBackPressedCallback: OnBackPressedCallback
     
     override fun onCreate(savedInstanceState: Bundle?) {
+        val themeManager = ThemeManager(this)
+        setTheme(themeManager.getThemeResourceId())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notes)
+        
+        this.themeManager = themeManager
+        themeManager.setThemeChangeListener(this)
+        themeManager.applyTheme(themeManager.getCurrentTheme())
         
         noteTitleEditText = findViewById(R.id.noteTitleEditText)
         noteEditText = findViewById(R.id.noteEditText)
@@ -39,7 +45,6 @@ class MainActivity : AppCompatActivity() {
         themeButton = findViewById(R.id.themeButton)
         clearButton = findViewById(R.id.clearButton)
         noteManager = NoteManager(this)
-        themeManager = ThemeManager(this)
         
         // Get note ID from intent or create new note
         val noteId = intent.getStringExtra("NOTE_ID")
@@ -170,6 +175,9 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
     
+    override fun onThemeChanged() {
+        recreate()
+    }
     
     override fun onPause() {
         super.onPause()

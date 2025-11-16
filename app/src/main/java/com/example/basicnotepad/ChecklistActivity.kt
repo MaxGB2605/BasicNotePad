@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class ChecklistActivity : AppCompatActivity() {
+class ChecklistActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener {
     
     private lateinit var editTextTitle: EditText
     private lateinit var headerTitle: TextView
@@ -36,8 +36,14 @@ class ChecklistActivity : AppCompatActivity() {
     private var hasUnsavedChanges = false
     
     override fun onCreate(savedInstanceState: Bundle?) {
+        val themeManager = ThemeManager(this)
+        setTheme(themeManager.getThemeResourceId())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checklist)
+        
+        this.themeManager = themeManager
+        themeManager.setThemeChangeListener(this)
+        themeManager.applyTheme(themeManager.getCurrentTheme())
         
         editTextTitle = findViewById(R.id.editTextTitle)
         headerTitle = findViewById(R.id.headerTitle)
@@ -50,7 +56,6 @@ class ChecklistActivity : AppCompatActivity() {
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
         
         noteManager = NoteManager(this)
-        themeManager = ThemeManager(this)
         
         // Get note ID from intent
         val noteId = intent.getStringExtra("NOTE_ID")
@@ -76,7 +81,7 @@ class ChecklistActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 currentNote?.title = s.toString()
                 // Update header title, fallback to "Checklist" if empty
-                headerTitle.text = if (s.toString().isBlank()) "Checklist" else s.toString()
+                headerTitle.text = s.toString().ifBlank { "Checklist" }
                 autoSave()
             }
         })
@@ -128,7 +133,7 @@ class ChecklistActivity : AppCompatActivity() {
         currentNote?.let { note ->
             editTextTitle.setText(note.title)
             // Update header title, fallback to "Checklist" if empty
-            headerTitle.text = if (note.title.isBlank()) "Checklist" else note.title
+            headerTitle.text = note.title.ifBlank { "Checklist" }
         }
         hasUnsavedChanges = false
         updateEmptyState()
@@ -243,6 +248,10 @@ class ChecklistActivity : AppCompatActivity() {
         } else {
             emptyStateTextView.visibility = View.GONE
         }
+    }
+    
+    override fun onThemeChanged() {
+        recreate()
     }
     
     override fun onPause() {

@@ -10,10 +10,17 @@ class ThemeManager(private val context: Context) {
     private val prefsName = "ThemePrefs"
     private val themeKey = "app_theme"
     
+    interface ThemeChangeListener {
+        fun onThemeChanged()
+    }
+    
+    private var themeChangeListener: ThemeChangeListener? = null
+    
     companion object {
         const val THEME_LIGHT = 0
         const val THEME_DARK = 1
         const val THEME_SYSTEM = 2
+        const val THEME_GOLDEN = 3
     }
     
     fun getCurrentTheme(): Int {
@@ -25,6 +32,12 @@ class ThemeManager(private val context: Context) {
         context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
             .edit { putInt(themeKey, theme) }
         applyTheme(theme)
+        // Notify listener to recreate activity
+        themeChangeListener?.onThemeChanged()
+    }
+    
+    fun setThemeChangeListener(listener: ThemeChangeListener) {
+        themeChangeListener = listener
     }
     
     fun applyTheme(theme: Int) {
@@ -32,6 +45,7 @@ class ThemeManager(private val context: Context) {
             THEME_LIGHT -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             THEME_DARK -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             THEME_SYSTEM -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            THEME_GOLDEN -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
     }
     
@@ -54,11 +68,23 @@ class ThemeManager(private val context: Context) {
         return getCurrentTheme() == THEME_DARK
     }
     
+    fun isGoldenTheme(): Boolean {
+        return getCurrentTheme() == THEME_GOLDEN
+    }
+    
+    fun getThemeResourceId(): Int {
+        return when (getCurrentTheme()) {
+            THEME_GOLDEN -> R.style.Theme_BasicNotepad_Golden
+            else -> R.style.Theme_BasicNotepad
+        }
+    }
+    
     fun showThemeDialog() {
         val themes = arrayOf(
             context.getString(R.string.theme_light),
             context.getString(R.string.theme_dark),
-            context.getString(R.string.theme_system)
+            context.getString(R.string.theme_system),
+            "Golden Summer Fields"
         )
         
         val currentTheme = getCurrentTheme()

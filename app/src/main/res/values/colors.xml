@@ -9,14 +9,15 @@
     <color name="white">#FFFFFFFF</color>
     
     <!-- Light theme colors - Warm Green Shades -->
-    <color name="light_background">#F5F9F3</color>        <!-- Very light warm green -->
-    <color name="light_surface">#E8F5E3</color>           <!-- Light sage green -->
-    <color name="light_primary">#7CB342</color>           <!-- Medium warm green -->
-    <color name="light_primary_dark">#558B2F</color>      <!-- Darker warm green -->
-    <color name="light_accent">#9CCC65</color>            <!-- Light lime green -->
-    <color name="light_text">#2E4A1F</color>              <!-- Dark green text -->
-    <color name="light_text_secondary">#5A7A3C</color>    <!-- Medium green text -->
-    <color name="light_hint">#A5C68D</color>              <!-- Light green hint -->
+    <color name="light_background">#b5ffe1</color>           <!-- Light mint green -->
+    <color name="light_surface">#93e5ab</color>              <!-- Soft mint green -->
+    <color name="light_primary">#65b891</color>              <!-- Medium teal green -->
+    <color name="light_primary_dark">#4e878c</color>         <!-- Dark teal -->
+    <color name="light_accent">#00241b</color>               <!-- Very dark green -->
+    <color name="light_text">#00241b</color>                 <!-- Very dark green text -->
+    <color name="light_text_secondary">#4e878c</color>       <!-- Dark teal text -->
+    <color name="light_hint">#65b891</color>                 <!-- Medium teal hint -->
+    <color name="light_card">#93e5ab</color>                 <!-- Soft mint green card -->
     
     <!-- Dark theme colors - Gray Shades -->
     <color name="dark_background">#1A1A1A</color>         <!-- Very dark gray -->
@@ -27,4 +28,16 @@
     <color name="dark_text">#E8E8E8</color>               <!-- Light gray text -->
     <color name="dark_text_secondary">#B0B0B0</color>     <!-- Medium gray text -->
     <color name="dark_hint">#707070</color>               <!-- Gray hint -->
+    
+    <!-- Golden Summer Fields Theme -->
+    <color name="golden_background">#fefae0</color>        <!-- Creamy white -->
+    <color name="golden_surface">#faedcd</color>           <!-- Light golden -->
+    <color name="golden_primary">#d4a373</color>           <!-- Warm golden brown -->
+    <color name="golden_primary_dark">#b8935f</color>      <!-- Darker golden brown -->
+    <color name="golden_accent">#ccd5ae</color>            <!-- Sage green accent -->
+    <color name="golden_text">#5d4037</color>              <!-- Dark brown text -->
+    <color name="golden_text_secondary">#8d6e63</color>    <!-- Medium brown text -->
+    <color name="golden_hint">#bcaaa4</color>              <!-- Light brown hint -->
+    <color name="golden_card">#e9edc9</color>              <!-- Pale green card background -->
+    
 </resources>

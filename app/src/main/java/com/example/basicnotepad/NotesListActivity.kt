@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class NotesListActivity : AppCompatActivity() {
+class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener {
     
     private lateinit var notesRecyclerView: RecyclerView
     private lateinit var emptyStateTextView: TextView
@@ -25,11 +25,14 @@ class NotesListActivity : AppCompatActivity() {
     private lateinit var themeManager: ThemeManager
     
     override fun onCreate(savedInstanceState: Bundle?) {
+        val themeManager = ThemeManager(this)
+        setTheme(themeManager.getThemeResourceId())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
         noteManager = NoteManager(this)
-        themeManager = ThemeManager(this)
+        this.themeManager = themeManager
+        themeManager.setThemeChangeListener(this)
         themeManager.applyTheme(themeManager.getCurrentTheme())
         
         notesRecyclerView = findViewById(R.id.notesRecyclerView)
@@ -181,6 +184,10 @@ class NotesListActivity : AppCompatActivity() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+    }
+    
+    override fun onThemeChanged() {
+        recreate()
     }
     
 }

@@ -9,16 +9,26 @@
     <color name="dark_surface">#2D2D2D</color>
     <color name="dark_text">#E8E8E8</color>
     <color name="dark_text_secondary">#B0B0B0</color>
+    <color name="golden_accent">#ccd5ae</color>
+    <color name="golden_background">#fefae0</color>
+    <color name="golden_card">#e9edc9</color>
+    <color name="golden_hint">#bcaaa4</color>
+    <color name="golden_primary">#d4a373</color>
+    <color name="golden_primary_dark">#b8935f</color>
+    <color name="golden_surface">#faedcd</color>
+    <color name="golden_text">#5d4037</color>
+    <color name="golden_text_secondary">#8d6e63</color>
     <color name="ic_launcher_background">#FFFFFF</color>
     <color name="ic_launcher_foreground_background">#87CEEB</color>
-    <color name="light_accent">#9CCC65</color>
-    <color name="light_background">#F5F9F3</color>
-    <color name="light_hint">#A5C68D</color>
-    <color name="light_primary">#7CB342</color>
-    <color name="light_primary_dark">#558B2F</color>
-    <color name="light_surface">#E8F5E3</color>
-    <color name="light_text">#2E4A1F</color>
-    <color name="light_text_secondary">#5A7A3C</color>
+    <color name="light_accent">#00241b</color>
+    <color name="light_background">#b5ffe1</color>
+    <color name="light_card">#93e5ab</color>
+    <color name="light_hint">#65b891</color>
+    <color name="light_primary">#65b891</color>
+    <color name="light_primary_dark">#4e878c</color>
+    <color name="light_surface">#93e5ab</color>
+    <color name="light_text">#00241b</color>
+    <color name="light_text_secondary">#4e878c</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -70,6 +80,21 @@
         <item name="materialButtonStyle">@style/Widget.App.Button.TextButton</item>
     </style>
     <style name="Theme.BasicNotepad" parent="Base.Theme.BasicNotepad"/>
+    <style name="Theme.BasicNotepad.Golden" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/golden_primary</item>
+        <item name="colorPrimaryVariant">@color/golden_primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/golden_accent</item>
+        <item name="colorSecondaryVariant">@color/golden_primary</item>
+        <item name="colorOnSecondary">@color/golden_text</item>
+        <item name="android:windowBackground">@color/golden_background</item>
+        <item name="android:colorBackground">@color/golden_background</item>
+        <item name="android:textColorPrimary">@color/golden_text</item>
+        <item name="android:textColorSecondary">@color/golden_text_secondary</item>
+        <item name="android:textColorHint">@color/golden_hint</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button.TextButton</item>
+        <item name="cardBackgroundColor">@color/golden_card</item>
+    </style>
     <style name="Widget.App.Button.TextButton" parent="Widget.Material3.Button.TextButton">
         <item name="android:textColor">@color/white</item>
     </style>

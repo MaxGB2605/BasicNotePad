@@ -9,10 +9,20 @@ color dark_primary_dark
 color dark_surface
 color dark_text
 color dark_text_secondary
+color golden_accent
+color golden_background
+color golden_card
+color golden_hint
+color golden_primary
+color golden_primary_dark
+color golden_surface
+color golden_text
+color golden_text_secondary
 color ic_launcher_background
 color ic_launcher_foreground_background
 color light_accent
 color light_background
+color light_card
 color light_hint
 color light_primary
 color light_primary_dark
@@ -97,4 +107,5 @@ string theme_system
 string title
 style Base.Theme.BasicNotepad
 style Theme.BasicNotepad
+style Theme.BasicNotepad.Golden
 style Widget.App.Button.TextButton
