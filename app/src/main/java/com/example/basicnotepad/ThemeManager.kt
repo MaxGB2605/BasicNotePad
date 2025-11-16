@@ -35,6 +35,11 @@ class ThemeManager(private val context: Context) {
         }
     }
     
+    /**
+     * Quick toggle between light and dark themes.
+     * Skips system theme and only switches between light/dark.
+     * Useful for quick theme switching without showing the full dialog.
+     */
     fun toggleTheme() {
         val currentTheme = getCurrentTheme()
         val newTheme = when (currentTheme) {

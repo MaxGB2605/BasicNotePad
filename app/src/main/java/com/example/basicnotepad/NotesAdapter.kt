@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class NotesAdapter(
@@ -16,6 +17,26 @@ class NotesAdapter(
         val titleTextView: TextView = itemView.findViewById(R.id.noteTitleTextView)
         val previewTextView: TextView = itemView.findViewById(R.id.notePreviewTextView)
         val dateTextView: TextView = itemView.findViewById(R.id.noteDateTextView)
+    }
+
+    class NoteDiffCallback(
+        private val oldList: List<Note>,
+        private val newList: List<Note>
+    ) : DiffUtil.Callback() {
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            val oldNote = oldList[oldItemPosition]
+            val newNote = newList[newItemPosition]
+            return oldNote.title == newNote.title && 
+                   oldNote.content == newNote.content &&
+                   oldNote.lastModified == newNote.lastModified
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -43,9 +64,12 @@ class NotesAdapter(
     override fun getItemCount(): Int = notes.size
 
     fun updateNotes(newNotes: List<Note>) {
+        val diffCallback = NoteDiffCallback(notes, newNotes)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        
         notes.clear()
         notes.addAll(newNotes)
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
     
     fun removeNote(note: Note) {

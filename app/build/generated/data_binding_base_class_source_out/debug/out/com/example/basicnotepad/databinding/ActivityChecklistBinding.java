@@ -40,6 +40,9 @@ public final class ActivityChecklistBinding implements ViewBinding {
   public final TextView emptyStateTextView;
 
   @NonNull
+  public final TextView headerTitle;
+
+  @NonNull
   public final RecyclerView recyclerViewChecklist;
 
   @NonNull
@@ -51,14 +54,15 @@ public final class ActivityChecklistBinding implements ViewBinding {
   private ActivityChecklistBinding(@NonNull LinearLayout rootView, @NonNull ImageButton backButton,
       @NonNull MaterialButton buttonAddItem, @NonNull Button clearButton,
       @NonNull EditText editTextTitle, @NonNull TextView emptyStateTextView,
-      @NonNull RecyclerView recyclerViewChecklist, @NonNull Button saveButton,
-      @NonNull Button themeButton) {
+      @NonNull TextView headerTitle, @NonNull RecyclerView recyclerViewChecklist,
+      @NonNull Button saveButton, @NonNull Button themeButton) {
     this.rootView = rootView;
     this.backButton = backButton;
     this.buttonAddItem = buttonAddItem;
     this.clearButton = clearButton;
     this.editTextTitle = editTextTitle;
     this.emptyStateTextView = emptyStateTextView;
+    this.headerTitle = headerTitle;
     this.recyclerViewChecklist = recyclerViewChecklist;
     this.saveButton = saveButton;
     this.themeButton = themeButton;
@@ -121,6 +125,12 @@ public final class ActivityChecklistBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.headerTitle;
+      TextView headerTitle = ViewBindings.findChildViewById(rootView, id);
+      if (headerTitle == null) {
+        break missingId;
+      }
+
       id = R.id.recyclerViewChecklist;
       RecyclerView recyclerViewChecklist = ViewBindings.findChildViewById(rootView, id);
       if (recyclerViewChecklist == null) {
@@ -140,8 +150,8 @@ public final class ActivityChecklistBinding implements ViewBinding {
       }
 
       return new ActivityChecklistBinding((LinearLayout) rootView, backButton, buttonAddItem,
-          clearButton, editTextTitle, emptyStateTextView, recyclerViewChecklist, saveButton,
-          themeButton);
+          clearButton, editTextTitle, emptyStateTextView, headerTitle, recyclerViewChecklist,
+          saveButton, themeButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

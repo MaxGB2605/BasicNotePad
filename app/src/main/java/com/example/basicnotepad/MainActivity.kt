@@ -1,14 +1,14 @@
 package com.example.basicnotepad
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     
     private lateinit var noteTitleEditText: EditText
     private lateinit var noteEditText: EditText
+    private lateinit var headerTitle: TextView
     private lateinit var backButton: ImageButton
     private lateinit var saveButton: Button
     private lateinit var themeButton: Button
@@ -24,13 +25,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var themeManager: ThemeManager
     private var currentNote: Note? = null
     private var hasUnsavedChanges = false
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_notes)
         
         noteTitleEditText = findViewById(R.id.noteTitleEditText)
         noteEditText = findViewById(R.id.noteEditText)
+        headerTitle = findViewById(R.id.headerTitle)
         backButton = findViewById(R.id.backButton)
         saveButton = findViewById(R.id.saveButton)
         themeButton = findViewById(R.id.themeButton)
@@ -53,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         
         // Set up button click listeners
         backButton.setOnClickListener {
-            onBackPressed()
+            handleBackPressed()
         }
         
         saveButton.setOnClickListener {
@@ -80,6 +83,11 @@ class MainActivity : AppCompatActivity() {
             }
             
             override fun afterTextChanged(s: Editable?) {
+                // Update header title when note title changes
+                if (noteTitleEditText.text.toString() != currentNote?.title) {
+                    // Update header title, fallback to app name if empty
+                    headerTitle.text = noteTitleEditText.text.toString().ifBlank { getString(R.string.app_name) }
+                }
                 // Auto-save after 2 seconds of inactivity
                 noteEditText.removeCallbacks(autoSaveRunnable)
                 noteEditText.postDelayed(autoSaveRunnable, 2000)
@@ -88,6 +96,38 @@ class MainActivity : AppCompatActivity() {
         
         noteTitleEditText.addTextChangedListener(textWatcher)
         noteEditText.addTextChangedListener(textWatcher)
+        
+        // Set up back press handler
+        setupBackPressedHandler()
+    }
+    
+    private fun setupBackPressedHandler() {
+        onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                handleBackPressed()
+            }
+        }
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+    
+    private fun handleBackPressed() {
+        if (hasUnsavedChanges) {
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Unsaved Changes")
+                .setMessage("You have unsaved changes. Do you want to save before leaving?")
+                .setPositiveButton("Save") { _, _ ->
+                    saveNote()
+                    hasUnsavedChanges = false
+                    finish()
+                }
+                .setNegativeButton("Don't Save") { _, _ ->
+                    finish()
+                }
+                .setNeutralButton("Cancel", null)
+                .show()
+        } else {
+            finish()
+        }
     }
     
     private val autoSaveRunnable = Runnable {
@@ -110,6 +150,8 @@ class MainActivity : AppCompatActivity() {
             noteTitleEditText.setText(note.title)
             noteEditText.setText(note.content)
             noteEditText.setSelection(note.content.length)
+            // Update header title, fallback to app name if empty
+            headerTitle.text = note.title.ifBlank { getString(R.string.app_name) }
         }
         hasUnsavedChanges = false
     }

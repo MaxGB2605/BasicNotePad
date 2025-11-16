@@ -21,6 +21,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class ChecklistActivity : AppCompatActivity() {
     
     private lateinit var editTextTitle: EditText
+    private lateinit var headerTitle: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var buttonAddItem: MaterialButton
     private lateinit var backButton: ImageButton
@@ -39,6 +40,7 @@ class ChecklistActivity : AppCompatActivity() {
         setContentView(R.layout.activity_checklist)
         
         editTextTitle = findViewById(R.id.editTextTitle)
+        headerTitle = findViewById(R.id.headerTitle)
         recyclerView = findViewById(R.id.recyclerViewChecklist)
         buttonAddItem = findViewById(R.id.buttonAddItem)
         backButton = findViewById(R.id.backButton)
@@ -73,6 +75,8 @@ class ChecklistActivity : AppCompatActivity() {
             }
             override fun afterTextChanged(s: Editable?) {
                 currentNote?.title = s.toString()
+                // Update header title, fallback to "Checklist" if empty
+                headerTitle.text = if (s.toString().isBlank()) "Checklist" else s.toString()
                 autoSave()
             }
         })
@@ -123,6 +127,8 @@ class ChecklistActivity : AppCompatActivity() {
     private fun loadChecklist() {
         currentNote?.let { note ->
             editTextTitle.setText(note.title)
+            // Update header title, fallback to "Checklist" if empty
+            headerTitle.text = if (note.title.isBlank()) "Checklist" else note.title
         }
         hasUnsavedChanges = false
         updateEmptyState()
@@ -166,15 +172,13 @@ class ChecklistActivity : AppCompatActivity() {
     }
     
     private fun addNewItem(content: String = "") {
-        currentNote?.let { note ->
+        currentNote?.let { _ ->
             val newItem = ChecklistItem(
                 text = content,
                 isChecked = false,
                 shouldAutoFocus = content.isEmpty()
             )
-            note.checklistItems.add(newItem)
-            val position = note.checklistItems.size - 1
-            checklistAdapter.notifyItemInserted(position)
+            checklistAdapter.addItem(newItem)
             
             // Update empty state
             updateEmptyState()
@@ -185,15 +189,11 @@ class ChecklistActivity : AppCompatActivity() {
     }
     
     private fun deleteItem(item: ChecklistItem) {
-        currentNote?.let { note ->
-            val position = note.checklistItems.indexOf(item)
-            if (position != -1) {
-                note.checklistItems.removeAt(position)
-                checklistAdapter.notifyItemRemoved(position)
-                hasUnsavedChanges = true
-                autoSave()
-                updateEmptyState()
-            }
+        currentNote?.let { _ ->
+            checklistAdapter.removeItem(item)
+            hasUnsavedChanges = true
+            autoSave()
+            updateEmptyState()
         }
     }
     

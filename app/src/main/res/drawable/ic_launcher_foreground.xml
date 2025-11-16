@@ -5,24 +5,27 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     
-    <!-- Simplified Background -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M24,0h60a24,24 0,0,1 24,24v60a24,24 0,0,1 -24,24h-60a24,24 0,0,1 -24,-24v-60a24,24 0,0,1 24,-24z" />
-    
-    <!-- Simplified Note Icon -->
-    <group>
+    <!-- Simplified Note Icon - Centered and sized for safe zone -->
+    <group
+        android:translateX="18"
+        android:translateY="18">
+        <!-- Note background -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M6,6h60a6,6 0,0,1 6,6v60a6,6 0,0,1 -6,6h-60a6,6 0,0,1 -6,-6v-60a6,6 0,0,1 6,-6z" />
+        
+        <!-- Note lines -->
         <path
             android:fillColor="#2196F3"
-            android:pathData="M30,30h30v10h-30z" />
+            android:pathData="M12,18h36v6h-36z" />
         <path
             android:fillColor="#2196F3"
-            android:pathData="M30,50h48v8h-48z" />
+            android:pathData="M12,30h48v4h-48z" />
         <path
             android:fillColor="#2196F3"
-            android:pathData="M30,65h48v8h-48z" />
+            android:pathData="M12,40h48v4h-48z" />
         <path
             android:fillColor="#2196F3"
-            android:pathData="M30,80h48v8h-48z" />
+            android:pathData="M12,50h48v4h-48z" />
     </group>
 </vector>

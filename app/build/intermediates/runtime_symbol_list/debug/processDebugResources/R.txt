@@ -2987,6 +2987,7 @@ int drawable ic_clear_black_24 0x7f07008d
 int drawable ic_clock_black_24dp 0x7f07008e
 int drawable ic_keyboard_black_24dp 0x7f07008f
 int drawable ic_launcher_foreground 0x7f070090
+int drawable ic_launcher_foreground_monochrome 0x7f0700e5
 int drawable ic_m3_chip_check 0x7f070091
 int drawable ic_m3_chip_checked_circle 0x7f070092
 int drawable ic_m3_chip_close 0x7f070093
@@ -3291,6 +3292,7 @@ int id graph_wrap 0x7f0800d8
 int id group_divider 0x7f0800d9
 int id grouping 0x7f0800da
 int id groups 0x7f0800db
+int id headerTitle 0x7f08020a
 int id header_title 0x7f0800dc
 int id hide_ime_id 0x7f0800dd
 int id hideable 0x7f0800de
@@ -3709,7 +3711,7 @@ int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_checklist 0x7f0b001c
 int layout activity_main 0x7f0b001d
-int layout activity_notes_list 0x7f0b001e
+int layout activity_notes 0x7f0b0072
 int layout custom_dialog 0x7f0b001f
 int layout design_bottom_navigation_item 0x7f0b0020
 int layout design_bottom_sheet_dialog 0x7f0b0021
@@ -3837,6 +3839,7 @@ int string add_new_note 0x7f100021
 int string androidx_startup 0x7f100022
 int string app_name 0x7f100023
 int string appbar_scrolling_view_behavior 0x7f100024
+int string back 0x7f1000c3
 int string bottom_sheet_behavior 0x7f100025
 int string bottomsheet_action_collapse 0x7f100026
 int string bottomsheet_action_expand 0x7f100027
@@ -3972,6 +3975,7 @@ int string mtrl_switch_track_decoration_path 0x7f1000a8
 int string mtrl_switch_track_path 0x7f1000a9
 int string mtrl_timepicker_cancel 0x7f1000aa
 int string mtrl_timepicker_confirm 0x7f1000ab
+int string no_items_yet_tap_to_add_your_first_item 0x7f1000c2
 int string no_notes_yet_ntap_to_create_one 0x7f1000ac
 int string note_content_hint 0x7f1000ad
 int string note_preview_text 0x7f1000ae

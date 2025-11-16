@@ -3,62 +3,82 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="?android:attr/colorBackground">
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:orientation="horizontal"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
+        android:orientation="horizontal"
         android:gravity="center_vertical">
+
+
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back"
             android:src="@android:drawable/ic_menu_revert"
-            android:contentDescription="Back"
-            android:tint="?attr/colorOnPrimary" />
+            app:tint="@color/white" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Checklist"
-            android:textColor="?attr/colorOnPrimary"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
         <Button
             android:id="@+id/saveButton"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/action_save"
-            android:textColor="?attr/colorOnPrimary"
+            android:textColor="@color/white" />
 
-            style="@style/Widget.Material3.Button.TextButton" />
-
-        <Button
-            android:id="@+id/themeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/action_theme"
-            android:textColor="?attr/colorOnPrimary"
-
-            style="@style/Widget.Material3.Button.TextButton" />
 
         <Button
             android:id="@+id/clearButton"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_clear"
-            android:textColor="?attr/colorOnPrimary"
-
             android:layout_marginEnd="8dp"
-            style="@style/Widget.Material3.Button.TextButton" />
+
+            android:text="@string/action_clear"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/themeButton"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_theme"
+
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
@@ -66,21 +86,21 @@
         android:id="@+id/editTextTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/title"
-        android:padding="16dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:background="@android:color/transparent"
+        android:hint="@string/title"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:padding="16dp"
         android:textColor="?android:attr/textColorPrimary"
         android:textColorHint="?android:attr/textColorHint"
-        android:inputType="text"
-        android:importantForAutofill="no" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="?android:attr/textColorHint"
-        android:alpha="0.3" />
+        android:alpha="0.3"
+        android:background="?android:attr/textColorHint" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -91,35 +111,35 @@
             android:id="@+id/recyclerViewChecklist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:padding="8dp" />
 
         <TextView
             android:id="@+id/emptyStateTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="No items yet. Tap + to add your first item."
+            android:text="@string/no_items_yet_tap_to_add_your_first_item"
+            android:textColor="?android:attr/textColorSecondary"
             android:textSize="16sp"
-            android:visibility="gone"
-            android:textColor="?android:attr/textColorSecondary" />
+            android:visibility="gone" />
 
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="8dp"
-        android:gravity="center_vertical">
+        android:padding="8dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonAddItem"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/add_item"
-            style="@style/Widget.Material3.Button.TextButton" />
+            android:text="@string/add_item" />
 
     </LinearLayout>
 

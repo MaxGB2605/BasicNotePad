@@ -5,56 +5,48 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.basicnotepad.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
-  public final ImageButton backButton;
+  public final TextView emptyStateTextView;
 
   @NonNull
-  public final Button clearButton;
+  public final FloatingActionButton fabAddNote;
 
   @NonNull
-  public final EditText noteEditText;
-
-  @NonNull
-  public final EditText noteTitleEditText;
-
-  @NonNull
-  public final Button saveButton;
+  public final RecyclerView notesRecyclerView;
 
   @NonNull
   public final Button themeButton;
 
-  private ActivityMainBinding(@NonNull LinearLayout rootView, @NonNull ImageButton backButton,
-      @NonNull Button clearButton, @NonNull EditText noteEditText,
-      @NonNull EditText noteTitleEditText, @NonNull Button saveButton,
-      @NonNull Button themeButton) {
+  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull TextView emptyStateTextView, @NonNull FloatingActionButton fabAddNote,
+      @NonNull RecyclerView notesRecyclerView, @NonNull Button themeButton) {
     this.rootView = rootView;
-    this.backButton = backButton;
-    this.clearButton = clearButton;
-    this.noteEditText = noteEditText;
-    this.noteTitleEditText = noteTitleEditText;
-    this.saveButton = saveButton;
+    this.emptyStateTextView = emptyStateTextView;
+    this.fabAddNote = fabAddNote;
+    this.notesRecyclerView = notesRecyclerView;
     this.themeButton = themeButton;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -79,33 +71,21 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.backButton;
-      ImageButton backButton = ViewBindings.findChildViewById(rootView, id);
-      if (backButton == null) {
+      id = R.id.emptyStateTextView;
+      TextView emptyStateTextView = ViewBindings.findChildViewById(rootView, id);
+      if (emptyStateTextView == null) {
         break missingId;
       }
 
-      id = R.id.clearButton;
-      Button clearButton = ViewBindings.findChildViewById(rootView, id);
-      if (clearButton == null) {
+      id = R.id.fabAddNote;
+      FloatingActionButton fabAddNote = ViewBindings.findChildViewById(rootView, id);
+      if (fabAddNote == null) {
         break missingId;
       }
 
-      id = R.id.noteEditText;
-      EditText noteEditText = ViewBindings.findChildViewById(rootView, id);
-      if (noteEditText == null) {
-        break missingId;
-      }
-
-      id = R.id.noteTitleEditText;
-      EditText noteTitleEditText = ViewBindings.findChildViewById(rootView, id);
-      if (noteTitleEditText == null) {
-        break missingId;
-      }
-
-      id = R.id.saveButton;
-      Button saveButton = ViewBindings.findChildViewById(rootView, id);
-      if (saveButton == null) {
+      id = R.id.notesRecyclerView;
+      RecyclerView notesRecyclerView = ViewBindings.findChildViewById(rootView, id);
+      if (notesRecyclerView == null) {
         break missingId;
       }
 
@@ -115,8 +95,8 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((LinearLayout) rootView, backButton, clearButton, noteEditText,
-          noteTitleEditText, saveButton, themeButton);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, emptyStateTextView, fabAddNote,
+          notesRecyclerView, themeButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

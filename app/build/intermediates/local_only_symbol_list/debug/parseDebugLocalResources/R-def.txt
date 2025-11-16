@@ -26,6 +26,7 @@ color teal_200
 color teal_700
 color white
 drawable ic_launcher_foreground
+drawable ic_launcher_foreground_monochrome
 id action_theme
 id addButton
 id backButton
@@ -39,6 +40,7 @@ id editTextItem
 id editTextTitle
 id emptyStateTextView
 id fabAddNote
+id headerTitle
 id itemContentInput
 id noteDateTextView
 id noteEditText
@@ -52,7 +54,7 @@ id saveButton
 id themeButton
 layout activity_checklist
 layout activity_main
-layout activity_notes_list
+layout activity_notes
 layout dialog_add_checklist_item
 layout dialog_create_note
 layout item_checklist
@@ -71,6 +73,7 @@ string add_item
 string add_new_item
 string add_new_note
 string app_name
+string back
 string choose_note_type
 string create
 string create_checklist
@@ -81,6 +84,7 @@ string hint_start_typing
 string item_content
 string jan_01_2024_12_00
 string list_item
+string no_items_yet_tap_to_add_your_first_item
 string no_notes_yet_ntap_to_create_one
 string note_content_hint
 string note_preview_text

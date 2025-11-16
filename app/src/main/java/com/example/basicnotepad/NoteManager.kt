@@ -1,18 +1,19 @@
 package com.example.basicnotepad
 
 import android.content.Context
+import androidx.core.content.edit
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class NoteManager(private val context: Context) {
     
-    private val PREFS_NAME = "NotepadPrefs"
-    private val NOTES_KEY = "notes_list"
+    private val prefsName = "NotepadPrefs"
+    private val notesKey = "notes_list"
     private val gson = Gson()
     
     fun getAllNotes(): MutableList<Note> {
-        val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val notesJson = sharedPreferences.getString(NOTES_KEY, null)
+        val sharedPreferences = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+        val notesJson = sharedPreferences.getString(notesKey, null)
         
         return if (notesJson != null) {
             val type = object : TypeToken<MutableList<Note>>() {}.type
@@ -48,10 +49,10 @@ class NoteManager(private val context: Context) {
     }
     
     private fun saveAllNotes(notes: List<Note>) {
-        val sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
+        val sharedPreferences = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
         val notesJson = gson.toJson(notes)
-        editor.putString(NOTES_KEY, notesJson)
-        editor.apply()
+        sharedPreferences.edit {
+            putString(notesKey, notesJson)
+        }
     }
 }
