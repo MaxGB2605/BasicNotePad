@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener {
-    
+
     private lateinit var notesRecyclerView: RecyclerView
     private lateinit var emptyStateTextView: TextView
     private lateinit var fabAddNote: FloatingActionButton
@@ -23,39 +23,39 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
     private lateinit var notesAdapter: NotesAdapter
     private lateinit var noteManager: NoteManager
     private lateinit var themeManager: ThemeManager
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val themeManager = ThemeManager(this)
         setTheme(themeManager.getThemeResourceId())
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+
         noteManager = NoteManager(this)
         this.themeManager = themeManager
         themeManager.setThemeChangeListener(this)
         themeManager.applyTheme(themeManager.getCurrentTheme())
-        
+
         notesRecyclerView = findViewById(R.id.notesRecyclerView)
         emptyStateTextView = findViewById(R.id.emptyStateTextView)
         fabAddNote = findViewById(R.id.fabAddNote)
         themeButton = findViewById(R.id.themeButton)
-        
+
         setupRecyclerView()
-        
+
         fabAddNote.setOnClickListener {
             showNoteTypeDialog()
         }
-        
+
         themeButton.setOnClickListener {
             themeManager.showThemeDialog()
         }
     }
-    
+
     override fun onResume() {
         super.onResume()
         loadNotes()
     }
-    
+
     private fun setupRecyclerView() {
         notesAdapter = NotesAdapter(
             mutableListOf(),
@@ -67,16 +67,16 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
                 true
             }
         )
-        
+
         notesRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@NotesListActivity)
             adapter = notesAdapter
         }
     }
-    
+
     private fun loadNotes() {
         val notes = noteManager.getAllNotes()
-        
+
         if (notes.isEmpty()) {
             notesRecyclerView.visibility = View.GONE
             emptyStateTextView.visibility = View.VISIBLE
@@ -86,13 +86,13 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
             notesAdapter.updateNotes(notes)
         }
     }
-    
+
     private fun showNoteTypeDialog() {
         val options = arrayOf(
             getString(R.string.create_note),
             getString(R.string.create_checklist)
         )
-        
+
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.choose_note_type)
             .setItems(options) { _, which ->
@@ -103,34 +103,34 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
             }
             .show()
     }
-    
+
     private fun createNewNote() {
         showCreateNoteDialog(isChecklist = false)
     }
-    
+
     private fun createNewChecklist() {
         showCreateNoteDialog(isChecklist = true)
     }
-    
+
     private fun showCreateNoteDialog(isChecklist: Boolean) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_create_note, null)
         val dialog = MaterialAlertDialogBuilder(this)
             .setView(dialogView)
             .setCancelable(true)
             .create()
-            
+
         val titleText = dialogView.findViewById<TextView>(R.id.dialogTitle)
-        val titleInput = dialogView.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.noteTitleInput)
+        val titleInput =
+            dialogView.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.noteTitleInput)
         val createButton = dialogView.findViewById<Button>(R.id.createButton)
-        
+
         // Set dialog title based on note type
         titleText.text = if (isChecklist) "Create New Checklist" else "Create New Note"
         titleInput.hint = if (isChecklist) "Checklist Title" else "Note Title"
-        
-        // Set focus and show keyboard
+
         titleInput.requestFocus()
         dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
-        
+
         createButton.setOnClickListener {
             val title = titleInput.text.toString().trim()
             if (title.isNotEmpty()) {
@@ -146,7 +146,7 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
                 titleInput.error = "Title cannot be empty"
             }
         }
-        
+
         // Handle keyboard done/enter key
         titleInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -156,10 +156,10 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
                 false
             }
         }
-        
+
         dialog.show()
     }
-    
+
     private fun openNote(note: Note) {
         val intent = if (note.isChecklist) {
             Intent(this, ChecklistActivity::class.java).apply {
@@ -172,7 +172,7 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
         }
         startActivity(intent)
     }
-    
+
     private fun showDeleteDialog(note: Note) {
         MaterialAlertDialogBuilder(this)
             .setTitle("Delete Note")
@@ -185,9 +185,9 @@ class NotesListActivity : AppCompatActivity(), ThemeManager.ThemeChangeListener 
             .setNegativeButton("Cancel", null)
             .show()
     }
-    
+
     override fun onThemeChanged() {
         recreate()
     }
-    
+
 }

@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageButton
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class ChecklistAdapter(
     private val items: MutableList<ChecklistItem>,
     private val onItemChanged: () -> Unit,
-    private val onItemDeleted: (ChecklistItem) -> Unit
+    private val onCheckStatusChanged: () -> Unit,
+    private val onItemDeleted: (ChecklistItem) -> Unit,
 ) : RecyclerView.Adapter<ChecklistAdapter.ChecklistViewHolder>() {
 
     class ChecklistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,44 +32,46 @@ class ChecklistAdapter(
 
     override fun onBindViewHolder(holder: ChecklistViewHolder, position: Int) {
         val item = items[position]
-        
-        // Remove previous listeners to avoid triggering on bind
+
         holder.checkbox.setOnCheckedChangeListener(null)
         holder.editText.removeTextChangedListener(holder.editText.tag as? TextWatcher)
-        
-        // Set values
+
         holder.checkbox.isChecked = item.isChecked
         holder.editText.setText(item.text)
-        
-        // Checkbox listener
+
         holder.checkbox.setOnCheckedChangeListener { _, isChecked ->
-            item.isChecked = isChecked
-            onItemChanged()
+            if (item.isChecked != isChecked) {
+                item.isChecked = isChecked
+                onCheckStatusChanged()
+            }
         }
-        
-        // EditText listener
+
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                item.text = s.toString()
-                onItemChanged()
+                if (item.text != s.toString()) {
+                    item.text = s.toString()
+                    onItemChanged()
+                }
             }
         }
         holder.editText.addTextChangedListener(textWatcher)
         holder.editText.tag = textWatcher
-        
+
         // Delete button listener
         holder.deleteButton.setOnClickListener {
             onItemDeleted(item)
         }
-        
-        // Auto-focus if this is a newly added item
         if (item.shouldAutoFocus) {
             holder.editText.requestFocus()
             holder.editText.post {
-                val imm = holder.editText.context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
-                imm.showSoftInput(holder.editText, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT)
+                val imm =
+                    holder.editText.context.getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
+                imm.showSoftInput(
+                    holder.editText,
+                    android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT
+                )
             }
             item.shouldAutoFocus = false
         }
@@ -88,3 +92,20 @@ class ChecklistAdapter(
         }
     }
 }
+
+class ChecklistDiffCallback(
+    private val oldList: List<ChecklistItem>,
+    private val newList: List<ChecklistItem>,
+) : DiffUtil.Callback() {
+    override fun getOldListSize(): Int = oldList.size
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition].id == newList[newItemPosition].id
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] == newList[newItemPosition]
+    }
+}
+
